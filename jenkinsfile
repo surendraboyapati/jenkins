@@ -19,7 +19,9 @@ pipeline {
             steps{
                 // while using  must have visudo permissions and restart jenkins..
                 // jenkins ALL=(ALL) NOPASSWD: ALL
-                sh '''sudo ./script.sh'''
+                sh '''
+                sudo chmod +x script.sh
+                sudo ./script.sh'''
             }
         }
 
@@ -41,7 +43,7 @@ pipeline {
                 
                  credentialsId: 'nexuslogin', 
                  groupId: 'org.springframework.boot', 
-                 nexusUrl: ':8081', 
+                 nexusUrl: '52.190.56.78:8081', 
                  nexusVersion: 'nexus3', 
                  protocol: 'http', 
                  repository: 'maven-snapshots', 
